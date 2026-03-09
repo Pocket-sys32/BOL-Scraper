@@ -16,6 +16,8 @@ def export_csv(results: list[DocumentResult], out_csv: Path) -> None:
         "total_rate_usd",
         "route_miles",
         "rate_per_mile",
+        "extraction_path",
+        "routing_provider",
         "errors",
     ]
 
@@ -35,6 +37,8 @@ def export_csv(results: list[DocumentResult], out_csv: Path) -> None:
                     "total_rate_usd": extracted.total_rate_usd if extracted else None,
                     "route_miles": miles,
                     "rate_per_mile": r.rate_per_mile,
+                    "extraction_path": r.extraction_path,
+                    "routing_provider": r.routing_provider_effective,
                     "errors": " | ".join(r.errors) if r.errors else "",
                 }
             )

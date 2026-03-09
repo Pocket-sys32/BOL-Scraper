@@ -54,3 +54,17 @@ class DocumentResult(BaseModel):
     rate_per_mile: Optional[float] = None
     errors: list[str] = Field(default_factory=list)
 
+    # Cost/decision analytics
+    extraction_path: str | None = Field(
+        default=None,
+        description='Which extractor produced "extracted": "rules", "llm", or "rules+llm".',
+    )
+    routing_provider_effective: str | None = Field(
+        default=None,
+        description='Which routing provider was actually used for miles: "osrm" or "google".',
+    )
+
+    # Internal decision flags
+    needs_llm: bool = False
+    needs_paid_routing: bool = False
+
