@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bol-scraper"
+version = "0.1.0"
+description = "OCR + LLM extraction + Google routing miles for BOL/invoice PDFs."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "PyMuPDF>=1.24.0",
+  "opencv-python>=4.9.0.0",
+  "pytesseract>=0.3.10",
+  "Pillow>=10.3.0",
+  "pydantic>=2.7.0",
+  "python-dotenv>=1.0.1",
+  "requests>=2.32.0",
+  "typer>=0.12.3",
+  "rich>=13.7.1",
+  "openai>=1.40.0",
+]
+
+[project.scripts]
+bol-scrape = "bol_scraper.cli:app"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
